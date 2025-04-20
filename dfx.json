@@ -1,36 +1,26 @@
 {
   "canisters": {
-    "dbank": {
-      "main": "src/dbank/main.mo",
-      "type": "motoko",
-      "candid": "src/dbank/dbank.did",
-      "build": "dfx build"
+    "DBank_backend": {
+      "main": "src/DBank_backend/main.mo",
+      "type": "motoko"
     },
-    "dbank_assets": {
+    "DBank_frontend": {
       "dependencies": [
-        "dbank"
+        "DBank_backend"
       ],
       "source": [
-        "src/dbank_assets/assets",
-        "src/dbank_assets/src"
+        "src/DBank_frontend/dist"
       ],
-      "type": "assets"
+      "type": "assets",
+      "workspace": "DBank_frontend"
     }
   },
   "defaults": {
     "build": {
+      "args": "",
       "packtool": ""
     }
   },
-  "dfx": "0.26.0",
-  "networks": {
-    "local": {
-      "bind": "127.0.0.1:8000",
-      "type": "ephemeral"
-    },
-    "ic": {
-      "providers": ["https://ic0.app"]
-    }
-  },
+  "output_env_file": ".env",
   "version": 1
 }
